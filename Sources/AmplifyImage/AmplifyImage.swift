@@ -19,6 +19,10 @@ public struct AmplifyImage: View {
 
 @available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
 extension AmplifyImage {
+    
+    public var kfImage: KFImage {
+        self.body
+    }
 
     public func resizable(
         capInsets: EdgeInsets = EdgeInsets(),
@@ -40,10 +44,6 @@ extension AmplifyImage {
     }
     
     public func scaleToFillWidth(aspectRatio: Double = 1) -> some View {
-        self.resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .clipped()
-            .aspectRatio(aspectRatio, contentMode: .fit)
+        self.body.scaleToFillWidth(aspectRatio: aspectRatio)
     }
 }
