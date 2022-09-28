@@ -1,4 +1,5 @@
 ![logo](https://user-images.githubusercontent.com/13292981/192897415-e6f61df1-34f3-4818-98da-e6126f888dc4.png)
+# AmplifyImage
 
 AmplifyImage is a lightweight wrapper around the powerful, image downloading and caching library, Kingfisher. It makes downloading, caching, and presenting images stored using AWS Amplify Storage easily presentable in your SwiftUI project.
 
