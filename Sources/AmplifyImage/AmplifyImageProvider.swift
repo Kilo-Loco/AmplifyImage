@@ -12,11 +12,14 @@ public struct AmplifyImageProvider: ImageDataProvider {
 
     public func data(handler: @escaping (Result<Data, Error>) -> Void) {
         let options = StorageDownloadDataRequest.Options(accessLevel: accessLevel)
-        _ = Amplify.Storage.downloadData(key: key, options: options) { result in
-            switch result {
-            case .success(let data):
+        Task {
+            do {
+                let data = try await Amplify.Storage.downloadData(
+                    key: key,
+                    options: options
+                ).value
                 handler(.success(data))
-            case .failure(let error):
+            } catch {
                 handler(.failure(error))
             }
         }
